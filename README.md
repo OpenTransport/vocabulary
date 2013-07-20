@@ -8,14 +8,14 @@ Caveat lector: This is not yet another format. This is just agreeing on the word
 
 ## Domains this vocabulary covers
 
-* Public transport
+### Public transport
 - Trains
 - Buses
 - Ferries
 - Subways
 - Space transport
 - ...
-* Private transport
+### Private transport
 - Parking spots
 - Rental services
 - Cycling
