@@ -15,7 +15,9 @@ Caveat lector: This is not yet another format. This is just agreeing on the word
 - Subways
 - Space transport
 - ...
+
 ### Private transport
+
 - Parking spots
 - Rental services
 - Cycling
