@@ -42,4 +42,8 @@ A `vehicle` is an object which can take one or more people from one place to ano
 
 # agency
 
-An `agency` maintains one or several modes for certain areas.
+An `agency` maintains one or several `mode`s for certain areas.
+
+# mode
+
+A `mode` is a type of transport. (To do: specify all the different `mode`s by comparing Transmodel and GTFS and extending it with private transport `mode`s)
