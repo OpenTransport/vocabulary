@@ -1,4 +1,4 @@
-# Public Transport
+# Open Transport vocabulary
 
 Caveat lector: We are *not* creating a new format. We are creating a vocabulary which can be mapped to the right formats. 
 
@@ -14,11 +14,9 @@ Caveat lector: We are *not* creating a new format. We are creating a vocabulary 
 
 We have added 2 files which should describe the mapping from this vocabulary towards GTFS and Transmodel.
 
-## Contributors
-
-* Navitia.io
-
 ## Interesting links
 
 * Ian Davis' effort on creating a vocabulary from GTFS: https://github.com/iand/vocab-transit
 * [The Transmodel specification](http://www.transmodel.org/en/cadre1.html)
+* [The Transmodel UML class diagram](http://sitp.transmodel.org/transmodel_v5_en/pages/7dd1ba283a7e0230.htm)
+* [The NeTEx glossary](https://www.dropbox.com/s/f5u91tq6tamimsf/NeTEx%20%28Transmodel-IFOPT%29%20Dictionnary.xls) - English only, merging part of Transmodel with some updates, and full IFOPT
