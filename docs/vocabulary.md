@@ -27,6 +27,9 @@ same `stop_point`s in exactly the same order belong to to the same `journey_patt
 ## route
 
 A `route` is a collection of `journey_pattern`s that match the same commercial direction.
+The direction is given by the operator and does not necessarily match any physical reality.
+
+A route can be `north bound`, `express`, `east branch`, etc.
 
 ## line
 
