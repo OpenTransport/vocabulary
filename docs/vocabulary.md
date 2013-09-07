@@ -52,3 +52,23 @@ An `agency` maintains one or several `mode`s for certain areas.
 # mode
 
 A `mode` is a type of transport. (To do: specify all the different `mode`s by comparing Transmodel and GTFS and extending it with private transport `mode`s)
+
+# trip
+
+A `trip` is a path through the transit network that can be used to travel from
+the departure location to the arrival location at a certain time. It consists
+of an ordered list of `trip_leg`s.
+
+Suppose we plan from `stop_area` Kerkehout, Wassenaar at 22:45 to `stop_area`
+Weteringplein, The Hague. The result could be a `trip` with a `trip_leg` from a
+`vehicle_journey` of Bus 90 from Kerkehout 22:56 to The Hague Central Station
+and a `trip_leg` of Tram 16 from Central Station 23:17 to Weteringplein.
+
+# trip_leg
+
+A `trip_leg` is a segment of a `vehicle_journey` that is used in a `trip`.
+
+# itinerary
+
+An `itinerary` is a human readable description of a `trip`. It commonly
+contains a list of directions.
