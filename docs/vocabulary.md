@@ -18,6 +18,11 @@ A `stop_area` is a collection of `stop_point`s. Generally there are at least two
 
 This object links two `stop_point`s together (named origin and destination). It is the walkable part of a journey.
 
+## vehicle_journey
+
+A `vehicle_journey` is a single run of a `vehicle` along a `journey_pattern`.
+For example, `vehicle` bus 23 leaving at 14:20 from `stop` Amsterdam Central
+Station.
 
 ## journey_pattern
 
