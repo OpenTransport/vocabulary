@@ -1,0 +1,162 @@
+@prefix : <http://vocab.mmlab.be/transport/terms/#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix transport: <http://vocab.mmlab.be/transport/terms/> .
+@base <http://vocab.mmlab.be/transport/terms/> .
+
+<http://vocab.mmlab.be/transport/terms/> rdf:type owl:Ontology .
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://vocab.mmlab.be/transport/terms/from
+
+transport:from rdf:type owl:ObjectProperty ;
+               
+               rdfs:comment "A start stop" ;
+               
+               rdfs:domain transport:journey_pattern ,
+                           transport:link ;
+               
+               rdfs:range transport:stop_area ,
+                          transport:stop_point .
+
+
+
+###  http://vocab.mmlab.be/transport/terms/serves_mode
+
+transport:serves_mode rdf:type owl:ObjectProperty ;
+                      
+                      rdfs:comment "Property to tell what modes are served by an agency"@en ;
+                      
+                      rdfs:domain transport:agency ;
+                      
+                      rdfs:range transport:mode .
+
+
+
+###  http://vocab.mmlab.be/transport/terms/to
+
+transport:to rdf:type owl:ObjectProperty ;
+             
+             rdfs:domain transport:journey_pattern ,
+                         transport:link ;
+             
+             rdfs:range transport:stop_area ,
+                        transport:stop_point .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://vocab.mmlab.be/transport/terms/distance
+
+transport:distance rdf:type owl:DatatypeProperty .
+
+
+
+###  http://vocab.mmlab.be/transport/terms/walk_distance
+
+transport:walk_distance rdf:type owl:DatatypeProperty ;
+                        
+                        rdfs:subPropertyOf transport:distance .
+
+
+
+###  http://vocab.mmlab.be/transport/terms/weelchair_distance
+
+transport:weelchair_distance rdf:type owl:DatatypeProperty ;
+                             
+                             rdfs:subPropertyOf transport:distance .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://vocab.mmlab.be/transport/terms/agency
+
+transport:agency rdf:type owl:Class ;
+                 
+                 rdfs:label "agency"@en ;
+                 
+                 rdfs:comment "An agency maintains one or several transport:modes for certain areas"@en .
+
+
+
+###  http://vocab.mmlab.be/transport/terms/journey_pattern
+
+transport:journey_pattern rdf:type owl:Class .
+
+
+
+###  http://vocab.mmlab.be/transport/terms/line
+
+transport:line rdf:type owl:Class .
+
+
+
+###  http://vocab.mmlab.be/transport/terms/link
+
+transport:link rdf:type owl:Class ;
+               
+               rdfs:comment "This object links two stop_points together (named origin and destination). It is the walkable part of a journey." .
+
+
+
+###  http://vocab.mmlab.be/transport/terms/mode
+
+transport:mode rdf:type owl:Class .
+
+
+
+###  http://vocab.mmlab.be/transport/terms/route
+
+transport:route rdf:type owl:Class .
+
+
+
+###  http://vocab.mmlab.be/transport/terms/stop_area
+
+transport:stop_area rdf:type owl:Class .
+
+
+
+###  http://vocab.mmlab.be/transport/terms/stop_point
+
+transport:stop_point rdf:type owl:Class .
+
+
+
+###  http://vocab.mmlab.be/transport/terms/stop_time
+
+transport:stop_time rdf:type owl:Class .
+
+
+
+###  http://vocab.mmlab.be/transport/terms/vehicle
+
+transport:vehicle rdf:type owl:Class .
+
+
