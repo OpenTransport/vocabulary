@@ -17,12 +17,15 @@ A `stop_area` is a collection of `stop_point`s. Generally there are at least two
 ## connection_link
 
 This object links two `stop_point`s together (named origin and destination). It is the walkable part of a journey.
-
-
+ 
 ## journey_pattern
 
 A journey pattern is an ordered list of `stop_point`s. Two `vehicle`s that serve exactly the
 same `stop_point`s in exactly the same order belong to to the same `journey_pattern`.
+
+## journey
+
+A `journey` is a single run of a `vehicle` along a `journey_pattern`. For example, `vehicle` bus 23 leaving at 14:20 from `stop_area` Amsterdam Central Station.
 
 ## route
 
