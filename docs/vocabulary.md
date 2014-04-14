@@ -14,7 +14,7 @@ Properties:
 
 A `stop_area` is a collection of `stop_point`s. Generally there are at least two `stop_points` per `stop_area`, one per direction of a line. Now think of a hub, you will have more than one `line`. Therefore your `stop_area` will contain more than two `stop_points`. In particular cases your `stop_area` can contain only one `stop_point`.
 
-## connection_link
+## link
 
 This object links two `stop_point`s together (named origin and destination). It is the walkable part of a journey.
  
