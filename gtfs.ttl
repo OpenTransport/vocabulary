@@ -7,9 +7,13 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix gtfs: <http://vocab.gtfs.org#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
 
 <http://vocab.gtfs.org#> a owl:Ontology ;
-          rdfs:comment "See https://developers.google.com/transit/gtfs/reference for semantics" .
+          rdfs:comment "See https://developers.google.com/transit/gtfs/reference for semantics" ;
+          rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference> .
+
+gtfs:Feed rdfs:subClassOf dcat:Distribution .
 
 gtfs:Agency a rdfs:Class .
 # Has these predicates:
@@ -21,18 +25,44 @@ gtfs:Agency a rdfs:Class .
 # foaf:phone
 # 
 gtfs:fareUrl a rdf:Property ;
+             rdfs:domain gtfs:Agency ;
              rdfs:comment "http://www.w3.org/Addressing/URL/4_URI_Recommentations.html". 
 
 gtfs:Stop a rdfs:Class .
 # Has these predicates:
 # dcterms:identifier
 gtfs:code a rdf:Property ;
+          rdfs:domain gtfs:Stop ;  
           rdfs:comment "See https://developers.google.com/transit/gtfs/reference" .
-#
+#foaf:name
+#dct:description
+#geo:long
+#geo:lat
+gtfs:zoneId a rdf:Property ;
+            rdfs:domain gtfs:Stop ;
+            rdfs:comment "Can be a literal or a URI" .
+#foaf:homepage
+#timezone
 
-gtfs:code a rdf:Property 
+gtfs:locationType a rdf:Property ;
+                  rdfs:domain gtfs:Stop .
+
+gtfs:parentStation a rdf:Property ;
+                  rdfs:domain gtfs:Stop .
+
+#This should be in the transmodel spec and we should have an owl:sameAs 
+#transmodel:StopArea rdfs:subClassOf gtfs:Stop ;
+#                    rdfs:label "Stop Area" ;
+#                    dct:alternate "Station" ;
+#                    rdfs:comment "a Stop Area is in fact a transmodel term. A gtfs:Stop is a gtfs:StopArea when gtfs:locationType is 1"
+#
+#transmodel:StopPoint rdfs:subClassOf gtfs:Stop ;
+#                     rdfs:label "" .
+gtfs:wheelchairBoarding a rdf:Property ;
+                  rdfs:domain gtfs:Stop .
 
 gtfs:Route a rdfs:Class .
+           
 
 gtfs:Trip a rdfs:Class .
 
