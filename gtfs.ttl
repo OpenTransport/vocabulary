@@ -10,8 +10,8 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 
 <http://vocab.gtfs.org#> a owl:Ontology ;
-          rdfs:comment "See https://developers.google.com/transit/gtfs/reference for semantics" ;
-          rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference> .
+                         rdfs:comment "See https://developers.google.com/transit/gtfs/reference for semantics" ;
+                         rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference> .
 
 gtfs:Feed rdfs:subClassOf dcat:Distribution .
 
@@ -26,7 +26,7 @@ gtfs:Agency a rdfs:Class .
 # 
 gtfs:fareUrl a rdf:Property ;
              rdfs:domain gtfs:Agency ;
-             rdfs:comment "http://www.w3.org/Addressing/URL/4_URI_Recommentations.html". 
+             rdfs:comment "http://www.w3.org/Addressing/URL/4_URI_Recommentations.html" . 
 
 gtfs:Stop a rdfs:Class .
 # Has these predicates:
@@ -109,20 +109,15 @@ gtfs:exactTimes  a rdf:Property;
 # GTFS table "transfers.txt"
 gtfs:Transfer a rdfs:Class .
 # has these predicates:
-fromStopId   a rdf:Property ;
+gtfs:fromStopId   a rdf:Property ;
              rdfs:domain gtfs:Transfer ;
              rdfs:range gtfs:Stop .
-toStopId     a rdf:Property ;
-             rdfs:domain gtfs:Transfer ;
-             rdfs:range gtfs:Stop .
-transferType a rdf:Property ;
-             rdfs:domain gtfs:Transfer ;
-             rdfs:range xsd:nonNegativeInteger .
-minTransferTime a rdf:Property ;
-                rdfs:domain gtfs:Transfer ;
-                rdfs:range  owl:Interval .
-
-
-
-
-
+gtfs:toStopId     a rdf:Property ;
+                  rdfs:domain gtfs:Transfer ;
+                  rdfs:range gtfs:Stop .
+gtfs:transferType a rdf:Property ;
+                  rdfs:domain gtfs:Transfer ;
+                  rdfs:range xsd:nonNegativeInteger .
+gtfs:minTransferTime a rdf:Property ;
+                     rdfs:domain gtfs:Transfer ;
+                     rdfs:range  owl:Interval .
