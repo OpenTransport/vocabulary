@@ -1,0 +1,16 @@
+
+URI STRATEGY
+============
+
+gtfs.org/feeds/xyz/
+gtfs.org/feeds/xyz/stops/abc
+ ^! no way to represent "all stops"
+
+gtfs.org/stops/
+gtfs.org/stops/xyz:
+gtfs.org/stops/xyz/
+gtfs.org/feeds/xyz
+
+
+
+
