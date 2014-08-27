@@ -76,11 +76,53 @@ gtfs:FareAttribute a rdfs:Class .
 
 gtfs:FareRule a rdfs:Class .
 
+# GTFS table "shapes.txt". Note that this is normalized differently than the GTFS spec itself.
 gtfs:Shape a rdfs:Class .
+# has these predicates:
 
+
+# GTFS table "shapes.txt". Note that this is normalized differently than the GTFS spec itself.
+gtfs:ShapePoint a rdfs:Class .
+# has these predicates:
+
+
+# GTFS table "frequencies.txt"
 gtfs:Frequency a rdfs:Class .
+# has these predicates:
+gtfs:tripId      a rdf:Property ;
+                 rdfs:domain gtfs:Frequency ; 
+                 rdfs:range  gtfs:Trip .
+# Not forbidden to repeat same triples elsewhere or add others with the same subject. tripId will also appear in TripTimes. 
+gtfs:startTime   a rdf:Property ;
+                 rdfs:domain gtfs:Frequency ;
+                 rdfs:range  xsd:time .
+gtfs:endTime     a rdf:Property;
+                 rdfs:domain gtfs:Frequency ;
+                 rdfs:range  xsd:time .
+gtfs:headwaySecs a rdf:Property;
+                 rdfs:domain gtfs:Frequency ;
+                 rdfs:range  owl:Interval .
+gtfs:exactTimes  a rdf:Property;
+                 rdfs:domain gtfs:Frequency ;
+                 rdfs:range xsd:boolean .
 
+# GTFS table "transfers.txt"
 gtfs:Transfer a rdfs:Class .
+# has these predicates:
+fromStopId   a rdf:Property ;
+             rdfs:domain gtfs:Transfer ;
+             rdfs:range gtfs:Stop .
+toStopId     a rdf:Property ;
+             rdfs:domain gtfs:Transfer ;
+             rdfs:range gtfs:Stop .
+transferType a rdf:Property ;
+             rdfs:domain gtfs:Transfer ;
+             rdfs:range xsd:nonNegativeInteger .
+minTransferTime a rdf:Property ;
+                rdfs:domain gtfs:Transfer ;
+                rdfs:range  owl:Interval .
+
+
 
 
 
