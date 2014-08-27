@@ -1,0 +1,56 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix gtfs: <http://vocab.gtfs.org#> .
+
+<http://vocab.gtfs.org#> a owl:Ontology ;
+          rdfs:comment "See https://developers.google.com/transit/gtfs/reference for semantics" .
+
+gtfs:Agency a rdfs:Class .
+# Has these predicates:
+# dcterms:identifier
+# foaf:name
+# foaf:homepage
+# ?:timezone (time ontology?)
+# language http://www.loc.gov/standards/iso639-2/php/code_list.php
+# foaf:phone
+# 
+gtfs:fareUrl a rdf:Property ;
+             rdfs:comment "http://www.w3.org/Addressing/URL/4_URI_Recommentations.html". 
+
+gtfs:Stop a rdfs:Class .
+# Has these predicates:
+# dcterms:identifier
+gtfs:code a rdf:Property ;
+          rdfs:comment "See https://developers.google.com/transit/gtfs/reference" .
+#
+
+gtfs:code a rdf:Property 
+
+gtfs:Route a rdfs:Class .
+
+gtfs:Trip a rdfs:Class .
+
+gtfs:StopTime a rdfs:Class .
+
+gtfs:Calendar a rdfs:Class .
+
+gtfs:CalendarDate a rdfs:Class .
+
+gtfs:FareAttribute a rdfs:Class .
+
+gtfs:FareRule a rdfs:Class .
+
+gtfs:Shape a rdfs:Class .
+
+gtfs:Frequency a rdfs:Class .
+
+gtfs:Transfer a rdfs:Class .
+
+
+
