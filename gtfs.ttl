@@ -71,7 +71,6 @@ gtfs:wheelchairBoarding a rdf:Property ;
 # GTFS table "routes.txt"
 # https://developers.google.com/transit/gtfs/reference#routes_fields
 gtfs:Route a rdfs:Class .
-<<<<<<< Updated upstream
 # routeId  dcterms:identifier
 # routeUrl foaf:homepage
 # routeLongName  foaf:name
@@ -97,18 +96,15 @@ gtfs:agencyId  a rdf:Property ;
 # directionId
 # blockId
 # shapeId
-routeId a rdf:Property;
-         rdfs:domain gtfs:Trip ;
-         rdfs:range  gtfs:Route .
-wheelchairAccessible a rdf:Property;
-         rdfs:domain gtfs:Trip ;
-         rdfs:range  xsd:boolean .
-bikesAllowed a rdf:Property;
-         rdfs:domain gtfs:Trip ;
-         rdfs:range  xsd:boolean .
-
-=======
->>>>>>> Stashed changes
+gtfs:routeId a rdf:Property;
+             rdfs:domain gtfs:Trip ;
+             rdfs:range  gtfs:Route .
+gtfs:wheelchairAccessible a rdf:Property;
+                          rdfs:domain gtfs:Trip ;
+                          rdfs:range  xsd:boolean .
+gtfs:bikesAllowed a rdf:Property;
+                  rdfs:domain gtfs:Trip ;
+                  rdfs:range  xsd:boolean .
 
 
 gtfs:StopTime a rdfs:Class .
