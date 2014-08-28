@@ -15,19 +15,21 @@
 
 gtfs:Feed rdfs:subClassOf dcat:Distribution .
 
+
+# GTFS table agencies.txt https://developers.google.com/transit/gtfs/reference#agency_fields
 gtfs:Agency a rdfs:Class .
-# Has these predicates:
-# dcterms:identifier
-# foaf:name
-# foaf:homepage
-# ?:timezone (time ontology?)
-# language http://www.loc.gov/standards/iso639-2/php/code_list.php
-# foaf:phone
-# 
+# agencyId    dcterms:identifier
+# agencyName  foaf:name
+# agencyUrl   foaf:homepage
+# agencyLang  language http://www.loc.gov/standards/iso639-2/php/code_list.php
+# agencyPhone foaf:phone
+# agencyTimezone ?:timezone (time ontology?)
 gtfs:fareUrl a rdf:Property ;
              rdfs:domain gtfs:Agency ;
              rdfs:comment "http://www.w3.org/Addressing/URL/4_URI_Recommentations.html" . 
 
+
+# GTFS table stops.txt https://developers.google.com/transit/gtfs/reference#stops_fields
 gtfs:Stop a rdfs:Class .
 # Has these predicates:
 # dcterms:identifier
@@ -61,20 +63,61 @@ gtfs:parentStation a rdf:Property ;
 gtfs:wheelchairBoarding a rdf:Property ;
                   rdfs:domain gtfs:Stop .
 
-gtfs:Route a rdfs:Class .
-           
 
-gtfs:Trip a rdfs:Class .
+# GTFS table "routes.txt"
+# https://developers.google.com/transit/gtfs/reference#routes_fields
+gtfs:Route a rdfs:Class .
+# routeId  dcterms:identifier
+# routeUrl foaf:homepage
+# routeLongName  foaf:name
+# routeShortName foaf:name
+# routeDesc      dct:description
+# routeColor     ?:colour
+# routeTextColor ?:colour
+gtfs:routeType a rdf:Property ;
+               rdfs:domain gtfs:Route ;
+               rdfs:range  xsd:nonNegativeInteger .
+gtfs:agencyId  a rdf:Property ;
+               rdfs:domain gtfs:Route ; 
+               rdfs:range  gtfs:Agency .
+             
+
+# GTFS table "trips.txt"
+# https://developers.google.com/transit/gtfs/reference#trips_fields
+# gtfs:Trip a rdfs:Class .
+# tripId dcterms:identifier
+# serviceId
+# tripHeadsign
+# tripShortName
+# directionId
+# blockId
+# shapeId
+routeId a rdf:Property;
+         rdfs:domain gtfs:Trip ;
+         rdfs:range  gtfs:Route .
+wheelchairAccessible a rdf:Property;
+         rdfs:domain gtfs:Trip ;
+         rdfs:range  xsd:boolean .
+bikesAllowed a rdf:Property;
+         rdfs:domain gtfs:Trip ;
+         rdfs:range  xsd:boolean .
+
+
 
 gtfs:StopTime a rdfs:Class .
 
+
 gtfs:Calendar a rdfs:Class .
+
 
 gtfs:CalendarDate a rdfs:Class .
 
+
 gtfs:FareAttribute a rdfs:Class .
 
+
 gtfs:FareRule a rdfs:Class .
+
 
 # GTFS table "shapes.txt". Note that this is normalized differently than the GTFS spec itself.
 gtfs:Shape a rdfs:Class .
@@ -106,6 +149,7 @@ gtfs:exactTimes  a rdf:Property;
                  rdfs:domain gtfs:Frequency ;
                  rdfs:range xsd:boolean .
 
+
 # GTFS table "transfers.txt"
 gtfs:Transfer a rdfs:Class .
 # has these predicates:
@@ -121,3 +165,4 @@ gtfs:transferType a rdf:Property ;
 gtfs:minTransferTime a rdf:Property ;
                      rdfs:domain gtfs:Transfer ;
                      rdfs:range  owl:Interval .
+
