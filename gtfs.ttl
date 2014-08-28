@@ -10,13 +10,14 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 
 <http://vocab.gtfs.org#> a owl:Ontology ;
-                         rdfs:comment "See https://developers.google.com/transit/gtfs/reference for semantics" ;
+                         rdfs:label "General Transit Feed Specification"@en ;
+                         rdfs:comment "This ontology is a translation of the General Transit Feed Specification towards URIs. For semantics of the classes and properties, see https://developers.google.com/transit/gtfs/reference."@en ;
                          rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference> .
-
 
 # GTFS table feed_info.txt
 # https://developers.google.com/transit/gtfs/reference#feed_info_fields
-gtfs:Feed rdfs:subClassOf dcat:Distribution .
+gtfs:Feed rdfs:subClassOf dcat:Dataset .
+
 
 
 # GTFS table agencies.txt https://developers.google.com/transit/gtfs/reference#agency_fields
@@ -64,12 +65,13 @@ gtfs:parentStation a rdf:Property ;
 #transmodel:StopPoint rdfs:subClassOf gtfs:Stop ;
 #                     rdfs:label "" .
 gtfs:wheelchairBoarding a rdf:Property ;
-                  rdfs:domain gtfs:Stop .
+                        rdfs:domain gtfs:Stop .
 
 
 # GTFS table "routes.txt"
 # https://developers.google.com/transit/gtfs/reference#routes_fields
 gtfs:Route a rdfs:Class .
+<<<<<<< Updated upstream
 # routeId  dcterms:identifier
 # routeUrl foaf:homepage
 # routeLongName  foaf:name
@@ -105,6 +107,8 @@ bikesAllowed a rdf:Property;
          rdfs:domain gtfs:Trip ;
          rdfs:range  xsd:boolean .
 
+=======
+>>>>>>> Stashed changes
 
 
 gtfs:StopTime a rdfs:Class .
