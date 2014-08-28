@@ -13,6 +13,9 @@
                          rdfs:comment "See https://developers.google.com/transit/gtfs/reference for semantics" ;
                          rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference> .
 
+
+# GTFS table feed_info.txt
+# https://developers.google.com/transit/gtfs/reference#feed_info_fields
 gtfs:Feed rdfs:subClassOf dcat:Distribution .
 
 
@@ -130,39 +133,41 @@ gtfs:ShapePoint a rdfs:Class .
 
 
 # GTFS table "frequencies.txt"
+# https://developers.google.com/transit/gtfs/reference#frequencies_fields
 gtfs:Frequency a rdfs:Class .
 # has these predicates:
-gtfs:tripId      a rdf:Property ;
-                 rdfs:domain gtfs:Frequency ; 
-                 rdfs:range  gtfs:Trip .
+gtfs:tripId a rdf:Property ;
+        rdfs:domain gtfs:Frequency ; 
+        rdfs:range  gtfs:Trip .
 # Not forbidden to repeat same triples elsewhere or add others with the same subject. tripId will also appear in TripTimes. 
-gtfs:startTime   a rdf:Property ;
-                 rdfs:domain gtfs:Frequency ;
-                 rdfs:range  xsd:time .
-gtfs:endTime     a rdf:Property;
-                 rdfs:domain gtfs:Frequency ;
-                 rdfs:range  xsd:time .
+gtfs:startTime a rdf:Property ;
+        rdfs:domain gtfs:Frequency ;
+        rdfs:range  xsd:time .
+gtfs:endTime a rdf:Property;
+        rdfs:domain gtfs:Frequency ;
+        rdfs:range  xsd:time .
 gtfs:headwaySecs a rdf:Property;
-                 rdfs:domain gtfs:Frequency ;
-                 rdfs:range  owl:Interval .
-gtfs:exactTimes  a rdf:Property;
-                 rdfs:domain gtfs:Frequency ;
-                 rdfs:range xsd:boolean .
+        rdfs:domain gtfs:Frequency ;
+        rdfs:range  owl:Interval .
+gtfs:exactTimes a rdf:Property;
+        rdfs:domain gtfs:Frequency ;
+        rdfs:range  xsd:boolean .
 
 
 # GTFS table "transfers.txt"
+# https://developers.google.com/transit/gtfs/reference#transfers_fields
 gtfs:Transfer a rdfs:Class .
 # has these predicates:
-gtfs:fromStopId   a rdf:Property ;
-             rdfs:domain gtfs:Transfer ;
-             rdfs:range gtfs:Stop .
-gtfs:toStopId     a rdf:Property ;
-                  rdfs:domain gtfs:Transfer ;
-                  rdfs:range gtfs:Stop .
+gtfs:fromStopId a rdf:Property ;
+        rdfs:domain gtfs:Transfer ;
+        rdfs:range  gtfs:Stop .
+gtfs:toStopId a rdf:Property ;
+        rdfs:domain gtfs:Transfer ;
+        rdfs:range  gtfs:Stop .
 gtfs:transferType a rdf:Property ;
-                  rdfs:domain gtfs:Transfer ;
-                  rdfs:range xsd:nonNegativeInteger .
+        rdfs:domain gtfs:Transfer ;
+        rdfs:range  xsd:nonNegativeInteger .
 gtfs:minTransferTime a rdf:Property ;
-                     rdfs:domain gtfs:Transfer ;
-                     rdfs:range  owl:Interval .
+        rdfs:domain gtfs:Transfer ;
+        rdfs:range  owl:Interval .
 
