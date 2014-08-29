@@ -6,7 +6,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix gtfs: <http://vocab.gtfs.org#> .
+@prefix gtfs: <http://vocab.gtfs.org/terms#> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 
 <http://vocab.gtfs.org#> a owl:Ontology ;
