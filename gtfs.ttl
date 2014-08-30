@@ -78,13 +78,21 @@ gtfs:Route a rdfs:Class .
 # routeDesc      dct:description
 # routeColor     ?:colour
 # routeTextColor ?:colour
+
+# can be given to a route or a trip
+gtfs:shortName a rdf:Property ;
+               rdfs:subPropertyOf foaf:name .
+
+
+gtfs:longName a rdf:Property ;
+                rdfs:subPropertyOf foaf:name .
+
 gtfs:routeType a rdf:Property ;
                rdfs:domain gtfs:Route ;
                rdfs:range  xsd:nonNegativeInteger .
-gtfs:agencyId  a rdf:Property ;
-               rdfs:domain gtfs:Route ; 
-               rdfs:range  gtfs:Agency .
-             
+gtfs:agency  a rdf:Property ;
+             rdfs:domain gtfs:Route ; 
+             rdfs:range  gtfs:Agency .
 
 # GTFS table "trips.txt"
 # https://developers.google.com/transit/gtfs/reference#trips_fields
@@ -96,9 +104,9 @@ gtfs:agencyId  a rdf:Property ;
 # directionId
 # blockId
 # shapeId
-gtfs:routeId a rdf:Property;
-             rdfs:domain gtfs:Trip ;
-             rdfs:range  gtfs:Route .
+gtfs:route a rdf:Property;
+           rdfs:domain gtfs:Trip ;
+           rdfs:range  gtfs:Route .
 gtfs:wheelchairAccessible a rdf:Property;
                           rdfs:domain gtfs:Trip ;
                           rdfs:range  xsd:boolean .
@@ -106,21 +114,45 @@ gtfs:bikesAllowed a rdf:Property;
                   rdfs:domain gtfs:Trip ;
                   rdfs:range  xsd:boolean .
 
-
+### --- gtfs:StopTime class
 gtfs:StopTime a rdfs:Class .
 
+gtfs:trip a rdf:Property ;
+          rdfs:range gtfs:Trip .
+gtfs:stop a rdf:Property ;
+          rdfs:range gtfs:Stop .
+
+gtfs:arrivalTime a rdf:Property ;
+                 rdfs:domain gtfs:StopTime .
+
+gtfs:departureTime a rdf:Property ;
+                   rdfs:domain gtfs:StopTime .
+
+gtfs:stopSequence a rdf:Property ;
+                  rdfs:domain gtfs:StopTime ;
+                  rdfs:range xsd:nonNegativeInteger .
+
+gtfs:headsign a rdf:Property ;
+              rdfs:range xsd:string .
+
+gtfs:pickupType a rdf:Property .
+
+gtfs:dropOffType a rdf:Property .
+
+gtfs:shapeDistTraveled a rdf:Property .
+
+# --- gtfs:Calendar class
 
 gtfs:Calendar a rdfs:Class .
 
-
+# --- gtfs:CalendarDate class
 gtfs:CalendarDate a rdfs:Class .
 
-
+# --- gtfs:FareAttribute class
 gtfs:FareAttribute a rdfs:Class .
 
-
+# --- gtfs:FareRule class
 gtfs:FareRule a rdfs:Class .
-
 
 # GTFS table "shapes.txt". Note that this is normalized differently than the GTFS spec itself.
 gtfs:Shape a rdfs:Class .
@@ -129,15 +161,14 @@ gtfs:Shape a rdfs:Class .
 
 # GTFS table "shapes.txt". Note that this is normalized differently than the GTFS spec itself.
 gtfs:ShapePoint a rdfs:Class .
-# has these predicates:
 
+# has these predicates:
 
 # GTFS table "frequencies.txt"
 # https://developers.google.com/transit/gtfs/reference#frequencies_fields
 gtfs:Frequency a rdfs:Class .
 # has these predicates:
-gtfs:tripId a rdf:Property ;
-        rdfs:domain gtfs:Frequency ; 
+gtfs:trip a rdf:Property ;
         rdfs:range  gtfs:Trip .
 # Not forbidden to repeat same triples elsewhere or add others with the same subject. tripId will also appear in TripTimes. 
 gtfs:startTime a rdf:Property ;
@@ -158,16 +189,16 @@ gtfs:exactTimes a rdf:Property;
 # https://developers.google.com/transit/gtfs/reference#transfers_fields
 gtfs:Transfer a rdfs:Class .
 # has these predicates:
-gtfs:fromStopId a rdf:Property ;
-        rdfs:domain gtfs:Transfer ;
-        rdfs:range  gtfs:Stop .
-gtfs:toStopId a rdf:Property ;
-        rdfs:domain gtfs:Transfer ;
-        rdfs:range  gtfs:Stop .
+gtfs:fromStop a rdf:Property ;
+              rdfs:domain gtfs:Transfer ;
+              rdfs:range  gtfs:Stop .
+gtfs:toStop a rdf:Property ;
+            rdfs:domain gtfs:Transfer ;
+            rdfs:range  gtfs:Stop .
 gtfs:transferType a rdf:Property ;
-        rdfs:domain gtfs:Transfer ;
-        rdfs:range  xsd:nonNegativeInteger .
+                  rdfs:domain gtfs:Transfer ;
+                  rdfs:range  xsd:nonNegativeInteger .
 gtfs:minTransferTime a rdf:Property ;
-        rdfs:domain gtfs:Transfer ;
-        rdfs:range  owl:Interval .
+                     rdfs:domain gtfs:Transfer ;
+                     rdfs:range  owl:Interval .
 
