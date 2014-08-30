@@ -79,6 +79,11 @@ gtfs:Route a rdfs:Class .
 # routeColor     ?:colour
 # routeTextColor ?:colour
 
+gtfs:color a rdf:Property ;
+           rdfs:range xsd:string .
+
+gtfs:textColor a rdf:Property .
+               rdfs:range xsd:string .
 # can be given to a route or a trip
 gtfs:shortName a rdf:Property ;
                rdfs:subPropertyOf foaf:name .
