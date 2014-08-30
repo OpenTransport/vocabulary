@@ -167,6 +167,31 @@ gtfs:shapeDistTraveled a rdf:Property .
 # --- calendar.txt and calendar_data.txt
 gtfs:Service a rdfs:Class .
 
+gtfs:mondaya a rdf:Property ;
+             rdfs:range xsd:boolean .
+
+gtfs:tuesday a rdf:Property ;
+             rdfs:range xsd:boolean .
+
+gtfs:wednesday a rdf:Property ;
+               rdfs:range xsd:boolean .
+
+gtfs:thursday a rdf:Property ;
+              rdfs:range xsd:boolean .
+
+gtfs:friday a rdf:Property ;
+            rdfs:range xsd:boolean .
+
+gtfs:saturday a rdf:Property ;
+              rdfs:range xsd:boolean .
+
+gtfs:sunday a rdf:Property ;
+            rdfs:range xsd:boolean .
+
+gtfs:startDate a rdf:Property .
+
+gtfs:endDate a rdf:Property .
+
 # --- gtfs:FareAttribute class
 gtfs:FareAttribute a rdfs:Class .
 
@@ -176,7 +201,6 @@ gtfs:FareRule a rdfs:Class .
 # GTFS table "shapes.txt". Note that this is normalized differently than the GTFS spec itself.
 gtfs:Shape a rdfs:Class .
 # has these predicates:
-
 
 # GTFS table "shapes.txt". Note that this is normalized differently than the GTFS spec itself.
 gtfs:ShapePoint a rdfs:Class .
@@ -188,20 +212,20 @@ gtfs:ShapePoint a rdfs:Class .
 gtfs:Frequency a rdfs:Class .
 # has these predicates:
 gtfs:trip a rdf:Property ;
-        rdfs:range  gtfs:Trip .
+          rdfs:range gtfs:Trip .
 # Not forbidden to repeat same triples elsewhere or add others with the same subject. tripId will also appear in TripTimes. 
 gtfs:startTime a rdf:Property ;
-        rdfs:domain gtfs:Frequency ;
-        rdfs:range  xsd:time .
-gtfs:endTime a rdf:Property;
-        rdfs:domain gtfs:Frequency ;
-        rdfs:range  xsd:time .
+               rdfs:domain gtfs:Frequency ;
+               rdfs:range xsd:time .
+gtfs:endTime a rdf:Property ;
+             rdfs:domain gtfs:Frequency ;
+             rdfs:range xsd:time .
 gtfs:headwaySecs a rdf:Property;
-        rdfs:domain gtfs:Frequency ;
-        rdfs:range  owl:Interval .
+                 rdfs:domain gtfs:Frequency ;
+                 rdfs:range owl:Interval .
 gtfs:exactTimes a rdf:Property;
-        rdfs:domain gtfs:Frequency ;
-        rdfs:range  xsd:boolean .
+                rdfs:domain gtfs:Frequency ;
+                rdfs:range xsd:boolean .
 
 
 # GTFS table "transfers.txt"
@@ -210,14 +234,14 @@ gtfs:Transfer a rdfs:Class .
 # has these predicates:
 gtfs:fromStop a rdf:Property ;
               rdfs:domain gtfs:Transfer ;
-              rdfs:range  gtfs:Stop .
+              rdfs:range gtfs:Stop .
 gtfs:toStop a rdf:Property ;
             rdfs:domain gtfs:Transfer ;
-            rdfs:range  gtfs:Stop .
+            rdfs:range gtfs:Stop .
 gtfs:transferType a rdf:Property ;
                   rdfs:domain gtfs:Transfer ;
-                  rdfs:range  xsd:nonNegativeInteger .
+                  rdfs:range xsd:nonNegativeInteger .
 gtfs:minTransferTime a rdf:Property ;
                      rdfs:domain gtfs:Transfer ;
-                     rdfs:range  owl:Interval .
+                     rdfs:range owl:Interval .
 
