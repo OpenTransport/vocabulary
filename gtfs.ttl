@@ -13,8 +13,8 @@
                          rdfs:label "General Transit Feed Specification"@en ;
                          rdfs:comment "This ontology is a translation of the General Transit Feed Specification towards URIs. For semantics of the classes and properties, see https://developers.google.com/transit/gtfs/reference."@en ;
                          rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference> ;
-                         dct:creator [foaf:mbox "Pieter.Colpaert@UGent.be"; foaf:name "Pieter Colpaert"] ;
-	                 dct:creator [foaf:mbox "abyrd@conveyal.com"; foaf:name "Andrew Byrd"] .
+                         dct:creator [ foaf:mbox "Pieter.Colpaert@UGent.be"; foaf:name "Pieter Colpaert" ] ;
+	                 dct:creator [ foaf:mbox "abyrd@conveyal.com"; foaf:name "Andrew Byrd" ] .
 
 # GTFS table feed_info.txt
 # https://developers.google.com/transit/gtfs/reference#feed_info_fields
@@ -84,7 +84,7 @@ gtfs:Route a rdfs:Class .
 gtfs:color a rdf:Property ;
            rdfs:range xsd:string .
 
-gtfs:textColor a rdf:Property .
+gtfs:textColor a rdf:Property ;
                rdfs:range xsd:string .
 # can be given to a route or a trip
 gtfs:shortName a rdf:Property ;
