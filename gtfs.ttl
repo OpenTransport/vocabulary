@@ -12,7 +12,9 @@
 <http://vocab.gtfs.org#> a owl:Ontology ;
                          rdfs:label "General Transit Feed Specification"@en ;
                          rdfs:comment "This ontology is a translation of the General Transit Feed Specification towards URIs. For semantics of the classes and properties, see https://developers.google.com/transit/gtfs/reference."@en ;
-                         rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference> .
+                         rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference> ;
+                         dct:creator [foaf:mbox "Pieter.Colpaert@UGent.be"; foaf:name "Pieter Colpaert"] ;
+	                 dct:creator [foaf:mbox "abyrd@conveyal.com"; foaf:name "Andrew Byrd"] .
 
 # GTFS table feed_info.txt
 # https://developers.google.com/transit/gtfs/reference#feed_info_fields
@@ -112,6 +114,7 @@ gtfs:agency  a rdf:Property ;
 gtfs:route a rdf:Property;
            rdfs:domain gtfs:Trip ;
            rdfs:range  gtfs:Route .
+
 gtfs:wheelchairAccessible a rdf:Property;
                           rdfs:domain gtfs:Trip ;
                           rdfs:range  xsd:boolean .
