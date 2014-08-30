@@ -90,13 +90,13 @@ gtfs:textColor a rdf:Property ;
 gtfs:shortName a rdf:Property ;
                rdfs:subPropertyOf foaf:name .
 
-
 gtfs:longName a rdf:Property ;
                 rdfs:subPropertyOf foaf:name .
 
 gtfs:routeType a rdf:Property ;
                rdfs:domain gtfs:Route ;
                rdfs:range  xsd:nonNegativeInteger .
+
 gtfs:agency  a rdf:Property ;
              rdfs:domain gtfs:Route ; 
              rdfs:range  gtfs:Agency .
@@ -106,11 +106,26 @@ gtfs:agency  a rdf:Property ;
 # gtfs:Trip a rdfs:Class .
 # tripId dcterms:identifier
 # serviceId
-# tripHeadsign
-# tripShortName
+# tripHeadsign: gtfs:headsign
+# tripShortName: gtfs:shortName
 # directionId
 # blockId
 # shapeId
+
+gtfs:service a rdf:Property ;
+               rdfs:range gtfs:Service .
+
+gtfs:direction a rdf:Property ;
+              rdfs:range xsd:nonNegativeInteger .
+
+
+gtfs:block a rdf:Property ;
+           rdfs:range xsd:nonNegativeInteger .
+
+gtfs:shape a rdf:Property ;
+           rdfs:range xsd:nonNegativeInteger .
+
+
 gtfs:route a rdf:Property;
            rdfs:domain gtfs:Trip ;
            rdfs:range  gtfs:Route .
@@ -149,12 +164,8 @@ gtfs:dropOffType a rdf:Property .
 
 gtfs:shapeDistTraveled a rdf:Property .
 
-# --- gtfs:Calendar class
-
-gtfs:Calendar a rdfs:Class .
-
-# --- gtfs:CalendarDate class
-gtfs:CalendarDate a rdfs:Class .
+# --- calendar.txt and calendar_data.txt
+gtfs:Service a rdfs:Class .
 
 # --- gtfs:FareAttribute class
 gtfs:FareAttribute a rdfs:Class .
