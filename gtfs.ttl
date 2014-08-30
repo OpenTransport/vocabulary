@@ -24,7 +24,7 @@ gtfs:Feed rdfs:subClassOf dcat:Dataset .
 gtfs:Agency a rdfs:Class .
 # agencyId    dcterms:identifier
 # agencyName  foaf:name
-# agencyUrl   foaf:homepage
+# agencyUrl   foaf:page
 # agencyLang  language http://www.loc.gov/standards/iso639-2/php/code_list.php
 # agencyPhone foaf:phone
 # agencyTimezone ?:timezone (time ontology?)
@@ -47,7 +47,7 @@ gtfs:code a rdf:Property ;
 gtfs:zoneId a rdf:Property ;
             rdfs:domain gtfs:Stop ;
             rdfs:comment "Can be a literal or a URI" .
-#foaf:homepage
+#foaf:page
 #timezone
 
 gtfs:locationType a rdf:Property ;
@@ -72,7 +72,7 @@ gtfs:wheelchairBoarding a rdf:Property ;
 # https://developers.google.com/transit/gtfs/reference#routes_fields
 gtfs:Route a rdfs:Class .
 # routeId  dcterms:identifier
-# routeUrl foaf:homepage
+# routeUrl foaf:page
 # routeLongName  foaf:name
 # routeShortName foaf:name
 # routeDesc      dct:description
