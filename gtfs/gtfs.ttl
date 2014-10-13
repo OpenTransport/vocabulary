@@ -60,7 +60,7 @@ gtfs:parentStation a rdf:Property ;
                    rdfs:domain gtfs:Stop .
 
 gtfs:Station a rdfs:Class ;
-             rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference#stops_fields> .
+             rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference#stops_fields> ;
              rdfs:label "Station"@en ;
              rdfs:comment "A physical structure or area that contains one or more stop."@en ;
              gtfs:comment "Map a row in stops.txt to gtfs:Station when the location_type is 1."@en .
@@ -243,7 +243,7 @@ gtfs:headsign a rdf:Property ;
 gtfs:distanceTraveled a rdf:Property ;
                        rdfs:label "Distance Traveled"@en ;
                        rdfs:comment "Positions a stop as a distance from the first shape point. It represents a real distance traveled along the route in units such as feet or kilometers. This information allows the trip planner to determine how much of the shape to draw when showing part of a trip on the map. The values used for gtfs:distanceTraveled must increase along with gtfs:stopSequence: they cannot be used to show reverse travel along a route."@en ;
-                       rdfs:domain gtfs:StopTime, gtfs:Shape
+                       rdfs:domain gtfs:StopTime, gtfs:Shape ;
                        rdfs:range xsd:nonNegativeInteger .
 
 gtfs:pickupType a rdf:Property ;
@@ -297,7 +297,7 @@ gtfs:CalendarRule a rdfs:Class ;
                   rdfs:subClassOf gtfs:ServiceRule ;
                   rdfs:label "Calendar rule"@en;
                   rdfs:comment "Defines on which days of the week for a certain period the service is available."@en ;
-                  rml:comment "a row from calendar.txt"@en .
+                  gtfs:comment "a row from calendar.txt"@en .
 
 gtfs:monday a rdf:Property ;
             rdfs:label "Monday"@en ;
@@ -339,10 +339,10 @@ gtfs:CalendarDateRule a rdfs:Class ;
                       rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference#calendar_dates_fields> ;
                       rdfs:label "Calendar date rule"@en ;
                       rdfs:comment "Defines service availability for a specific date"@en ;
-                      rml:comment "a row from calendar_dates.txt"@en .
+                      gtfs:comment "a row from calendar_dates.txt"@en .
 
 gtfs:dateAddition a rdf:Property ;
-                  rml:comment "The exception_type field in calendar_dates.txt - 1 is true, 2 is false."@en ;
+                  gtfs:comment "The exception_type field in calendar_dates.txt - 1 is true, 2 is false."@en ;
                   rdfs:label "Date Addition"@en ;
                   rdfs:comment "A boolean whether to add (true) or remove (false) a date"@en ;
                   rdfs:domain gtfs:CalendarDateRule ;
