@@ -10,13 +10,13 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix cc: <http://creativecommons.org/ns#> .
+@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 
 <http://vocab.gtfs.org/terms#> a owl:Ontology ;
                                rdfs:label "General Transit Feed Specification"@en ;
                                rdfs:comment "This ontology is a translation of the General Transit Feed Specification towards URIs. Its intended use is creating an exchange platform where the Linked GTFS model can be used as a start to get the right data into the right format. For semantics of the classes and properties, see https://developers.google.com/transit/gtfs/reference."@en ;
                                vann:preferredNamespacePrefix "gtfs" ;
                                vann:preferredNamespaceUri "http://vocab.gtfs.org/terms#";
-                               cc:license 	<http://creativecommons.org/licenses/by/3.0/> ;
                                rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference> ;
                                dct:creator [ foaf:mbox "Pieter.Colpaert@UGent.be"; foaf:name "Pieter Colpaert" ] ;
                                dct:creator [ foaf:mbox "abyrd@conveyal.com"; foaf:name "Andrew Byrd" ] .
