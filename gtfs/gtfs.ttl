@@ -14,7 +14,10 @@
 @prefix schema: <http://schema.org/> .
 
 <http://vocab.gtfs.org/terms> a foaf:Document ;
-                              foaf:primaryTopic <http://vocab.gtfs.org/terms#> .
+                              foaf:primaryTopic <http://vocab.gtfs.org/terms#> ;
+                              dct:hasFormat <https://raw.githubusercontent.com/OpenTransport/vocabulary/master/gtfs/gtfs.ttl> ;
+                              cc:license <http://creativecommons.org/licenses/by/3.0/> ;
+                              dct:rights "Copyright 2014 - Open Transport contributors" .
 
 <http://vocab.gtfs.org/terms#> a owl:Ontology ;
                                rdfs:label "General Transit Feed Specification"@en ;
