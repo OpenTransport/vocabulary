@@ -11,6 +11,10 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix cc: <http://creativecommons.org/ns#> .
 @prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix schema: <http://schema.org/> .
+
+<http://vocab.gtfs.org/terms> a foaf:Document ;
+                              foaf:primaryTopic <http://vocab.gtfs.org/terms#> .
 
 <http://vocab.gtfs.org/terms#> a owl:Ontology ;
                                rdfs:label "General Transit Feed Specification"@en ;
@@ -192,9 +196,9 @@ gtfs:shape a rdf:Property ;
 
 gtfs:route a rdf:Property ;
            rdfs:label "Route"@en ;
-           rdfs:comment "The trip follows a certain route"@en ;
+           rdfs:comment "This thing is applicable to this gtfs:Route"@en ;
            rdfs:domain gtfs:Trip ;
-           rdfs:range gtfs:Route .
+           rdfs:range gtfs:Route, gtfs:FareClass .
 
 gtfs:bikesAllowed a rdf:Property ;
                   rdfs:label "Bikes allowed"@en ;
@@ -207,7 +211,7 @@ gtfs:StopTime a rdfs:Class ;
 
 gtfs:trip a rdf:Property ;
           rdfs:label "Trip"@en;
-          rdfs:comment "Indictates that this is part of which gtfs:Trip"@en;
+          rdfs:comment "Indictates that this is part of a certain gtfs:Trip"@en;
           rdfs:range gtfs:Trip .
 
 gtfs:stop a rdf:Property ;
@@ -348,11 +352,67 @@ gtfs:dateAddition a rdf:Property ;
                   rdfs:domain gtfs:CalendarDateRule ;
                   rdfs:range xsd:boolean .
 
-# TODO: --- gtfs:FareAttribute class
-gtfs:FareAttribute a rdfs:Class .
+gtfs:FareClass a rdfs:Class ;
+               rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference#fare_attributes_fields> ,
+                 <https://developers.google.com/transit/gtfs/reference#fare_rules_fields>,
+                 <https://code.google.com/p/googletransitdatafeed/wiki/FareExamples> ;
+               rdfs:subClassOf schema:PriceSpecification ;
+               rdfs:label "Fare Class"@en ;
+               rdfs:comment "A class describing how the fare is calculated."@en ;
+               gtfs:comment "A gtfs:FareClass corresponds to a row in the fare_attributes.txt file."@en .
 
-# TODO: --- gtfs:FareRule class
-gtfs:FareRule a rdfs:Class .
+gtfs:paymentMethod a rdf:Property ;
+                   rdfs:label "Payment method"@en ;
+                   rdfs:comment "The payment method"@en ;
+                   gtfs:comment "payment_method field in fare_attributes. If 0, use gtfs:OnBoard; if 1, use gtfs:BeforeBoarding"@en ;
+                   rdfs:range gtfs:PaymentMethod ;
+                   rdfs:domain gtfs:FareClass .
+
+gtfs:PaymentMethod a rdfs:Class ;
+                   rdfs:label "Payment Method"@en;
+                   rdfs:comment "Method to pay for the public transit service"@en .
+
+gtfs:OnBoard a gtfs:PaymentMethod ;
+             rdfs:label "On Board"@en ;
+             rdfs:comment "Fare should be bought on board"@en .
+
+gtfs:BeforeBoarding a gtfs:PaymentMethod ;
+                    rdfs:label "Before Boarding"@en ;
+                    rdfs:comment "Ticket should be bought before boarding"@en .
+
+gtfs:transfers a rdf:Property ;
+               rdfs:domain gtfs:FareClass ;
+               rdfs:label "Transfers"@en ;
+               rdfs:comment "The validity of the ticket when transferring"@en ;
+               gtfs:comment "Map to 0 to gtfs:NoTransfersAllowed, 1 to gtfs:OneTransferAllowed, 2 to gtfs:TwoTransfersAllowed and empty to gtfs:UnlimitedTransfersAllowed"@en ;
+               rdfs:range gtfs:TransfersAllowedType .
+
+gtfs:TransfersAllowedType a rdfs:Class ;
+                          rdfs:label "Transfers Allowed Type"@en ;
+                          rdfs:comment "Instances of this class describe whether tickets remain valid when transferring"@en .
+
+gtfs:NoTransfersAllowed a gtfs:TransfersAllowedType ;
+                        rdfs:label "No transfers allowed"@en ;
+                        rdfs:comment "Indicate that a passenger should buy a new ticket when transferring"@en .
+
+gtfs:OneTransfersAllowed a gtfs:TransfersAllowedType ;
+                        rdfs:label "No transfers allowed"@en ;
+                        rdfs:comment "Indicate that a passenger should buy a new ticket when transferring a second time"@en .
+
+gtfs:TwoTransfersAllowed a gtfs:TransfersAllowedType;
+                        rdfs:label "Two transfers allowed"@en ;
+                        rdfs:comment "Indicate that a passenger should buy a new ticket when transferring for the third time"@en .
+
+gtfs:UnlimitedTransfersAllowed a gtfs:TransfersAllowedType;
+                        rdfs:label "Unlimited transfers allowed"@en ;
+                        rdfs:comment "Indicate that a passenger should buy a new ticket when transferring for the third time"@en .
+
+gtfs:transferExpiryTime a rdf:Property ;
+                        rdfs:label "Transfer Expiry Time"@en ;
+                        rdfs:comment "The time a ticket remains valid when having left the previous vehicle"@en .
+
+gtfs:originZone a rdf:Property .
+gtfs:destinationZone a rdf:Property .
 
 gtfs:Shape a rdfs:Class ;
            rdfs:label "Shape"@en ;
@@ -376,36 +436,83 @@ gtfs:pointSequence a rdf:Property ;
                    rdfs:domain gtfs:ShapePoint ;
                    rdfs:range xsd:nonNegativeInteger .
 
-# TODO still:
-# GTFS table "frequencies.txt"
-# https://developers.google.com/transit/gtfs/reference#frequencies_fields
-gtfs:Frequency a rdfs:Class .
-# has these predicates:
-gtfs:trip a rdf:Property ;
-          rdfs:range gtfs:Trip .
-gtfs:headwaySecs a rdf:Property;
-                 rdfs:domain gtfs:Frequency ;
-                 rdfs:range owl:Interval .
-gtfs:exactTimes a rdf:Property;
-                rdfs:domain gtfs:Frequency ;
-                rdfs:range xsd:boolean .
+gtfs:Frequency a rdfs:Class ;
+               rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference#frequencies_fields> ;
+               rdfs:label "Frequency"@en ;
+               rdfs:comment "An alternative to defining departures and arrivals as StopTimes: define frequencies for transit vehicle" .
 
-# GTFS table "transfers.txt"
-# https://developers.google.com/transit/gtfs/reference#transfers_fields
-gtfs:Transfer a rdfs:Class .
-# has these predicates:
-gtfs:fromStop a rdf:Property ;
-              rdfs:domain gtfs:Transfer ;
-              rdfs:range gtfs:Stop .
-gtfs:toStop a rdf:Property ;
-            rdfs:domain gtfs:Transfer ;
-            rdfs:range gtfs:Stop .
+gtfs:startTime a rdf:Property ;
+               rdfs:label "Start Time"@en ;
+               rdfs:comment "Specifies the time at which service begins with the specified frequency"@en ;
+               rdfs:domain gtfs:Frequency ;
+               rdfs:range xsd:string .
+
+gtfs:endTime a rdf:Property ;
+               rdfs:label "End Time"@en ;
+               rdfs:comment ""@en ;
+               rdfs:domain gtfs:Frequency ;
+               rdfs:range xsd:string .
+
+gtfs:headwaySeconds a rdf:Property;
+                    rdfs:label "Headway Seconds"@en ;
+                    rdfs:comment "Indicates the time between departures from the same stop (headway) for this trip type, during the time interval specified by gtfs:startTime and gtfs:endTime."@en ;
+                    rdfs:domain gtfs:Frequency ;
+                    rdfs:range xsd:nonNegativeInteger .
+
+gtfs:usesExactTimes a rdf:Property;
+                    rdfs:label "Frequency uses exact times"@en ;
+                    gtfs:comment "This is false when exact_times for this row is 0 or empty, true when it is 1"@en ;
+                    rdfs:domain gtfs:Frequency ;
+                    rdfs:range xsd:boolean .
+
+gtfs:TransferRule a rdfs:Class ;
+                  rdfs:label "Transfer Rule"@en ;
+                  rdfs:comment "Define additional rules for making connections between routes."@en ;
+                  rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference#transfers_fields> .
+
+gtfs:originStop a rdf:Property ;
+                rdfs:label "Origin Stop"@en ;
+                rdfs:comment "Link to gtfs:Stop to start from"@en ;
+                gtfs:comment "Map from from_stop_id in transfers.txt"@en;
+                rdfs:range gtfs:Stop .
+
+gtfs:destinationStop a rdf:Property ;
+                     rdfs:label "Destination Stop"@en ;
+                     rdfs:comment "Link to gtfs:Stop to go to"@en ;
+                     gtfs:comment "Map from to_stop_id in transfers.txt"@en;
+                     rdfs:range gtfs:Stop .
+
 gtfs:transferType a rdf:Property ;
+                  rdfs:label "Transfer Type"@en ;
                   rdfs:domain gtfs:Transfer ;
-                  rdfs:range xsd:nonNegativeInteger .
-gtfs:minTransferTime a rdf:Property ;
-                     rdfs:domain gtfs:Transfer ;
-                     rdfs:range owl:Interval .
+                  rdfs:range gtfs:TransferType .
+
+gtfs:TransferType a rdfs:Class ;
+                  rdfs:label "Transfer Type"@en ;
+                  rdfs:comment "Instances of this class can be used to describe how to handle a transfer rule"@en ;
+                  gtfs:comment "When transfer_type in transfers.txt is 0 or empty, map to gtfs:RecommendedTransfer, when 1, map to gtfs:EnsuredTransfer, when 2, gtfs:MinimumTimeTransfer, when 3: gtfs:NoTransfer."@en .
+
+gtfs:RecommendedTransfer a gtfs:TransferType ;
+                         rdfs:label "Recommended Transfer"@en ;
+                         rdfs:comment "This is a recommended transfer point between two routes"@en .
+
+gtfs:EnsuredTransfer a gtfs:TransferType ;
+                     rdfs:label "Ensured Transfer"@en ;
+                     rdfs:comment "This is a timed transfer point between two routes. The departing vehicle is expected to wait for the arriving one, with sufficient time for a passenger to transfer between routes."@en .
+
+gtfs:MinimumTimeTransfer a gtfs:TransferType ;
+                         rdfs:label "Mimimum Time Transfer"@en ;
+                         rdfs:comment "This transfer requires a minimum amount of time between arrival and departure to ensure a connection. The time required to transfer is specified by gtfs:minimumTransferTime"@en .
+
+gtfs:minimumTransferTime a rdf:Property ;
+                         rdfs:label "Minimum Transfer Time"@en ;
+                         rdfs:comment "The minimum transfer time when the gtfs:transferType is gtfs:MinimumTimeTransfer."@en ;
+                         rdfs:domain gtfs:TransferRule ;
+                         rdfs:range xsd:nonNegativeInteger .
+
+gtfs:NoTransfer a gtfs:TransferType ;
+                rdfs:label "No Transfer"@en ;
+                rdfs:comment "Transfers are not possible between routes at this location."@en .
 
 gtfs:comment a rdf:Poperty ;
              rdfs:subPropertyOf rdfs:comment ;

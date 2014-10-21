@@ -67,8 +67,8 @@ A [gtfs:Stop](http://vocab.gtfs.org/terms#Stop) is a physical location where a v
 
 _Mandatory properties_:
  * [foaf:name](http://xmlns.com/foaf/0.1/name) - The name of the stop
- * geo:lat
- * geo:long
+ * [geo:long](http://www.w3.org/2003/01/geo/wgs84_pos#long), [geo:lat](http://www.w3.org/2003/01/geo/wgs84_pos#lat) - longitude an latitude in WGS84
+
 
 _Optional properties_:
  * [dct:identifier](http://purl.org/dc/terms/identifier) - a "code": short text or a number that uniquely identifies the stop for passengers. They are often used in phone-based transit information systems or printed on stop signage to make it easier for riders to get a stop schedule or real-time arrival information for a particular stop.
@@ -84,8 +84,7 @@ A [gtfs:Station](http://vocab.gtfs.org/terms#Station) contains 1 or more instanc
 
 _Mandatory properties_:
  * [foaf:name](http://xmlns.com/foaf/0.1/name) - The name of the station
- * geo:lat
- * geo:long
+ * [geo:long](http://www.w3.org/2003/01/geo/wgs84_pos#long), [geo:lat](http://www.w3.org/2003/01/geo/wgs84_pos#lat) - longitude an latitude in WGS84
 
 _Optional properties_:
  * [dct:identifier](http://purl.org/dc/terms/identifier) - a "code": short text or a number that uniquely identifies the stop for passengers. They are often used in phone-based transit information systems or printed on stop signage to make it easier for riders to get a stop schedule or real-time arrival information for a particular station.
@@ -162,7 +161,7 @@ _Optional properties_:
  * [gtfs:pickupType](http://vocab.gtfs.org/terms#pickupType) - how to get on a transit vehicle at a certain time & location
  * [gtfs:dropOffType](http://vocab.gtfs.org/terms#dropOffType) - how to get off a transit vehicle at a certain time & location
 
-### [gtfs:PickupType](http://vocab.gtfs.org/terms#PickupType) and gtfs:DropOffType
+### [gtfs:PickupType](http://vocab.gtfs.org/terms#PickupType) and [gtfs:DropOffType](http://vocab.gtfs.org/terms#DropOffType)
 
 4 types are defined which are both a [gtfs:PickupType](http://vocab.gtfs.org/terms#PickupType) and a gtfs:DropOffType
  * gtfs:Regular
@@ -191,6 +190,30 @@ _Mandatory properties_:
  * [dct:date](http://purl.org/dc/terms/date) - the date the CalendarDateRule applies
  * [gtfs:dateAddition](http://vocab.gtfs.org/terms#dateAddition) - A boolean whether to add (true) or remove (false) a date
 
+### gtfs:FareClass
+
+A fare class defines a class of pricing. It's a subclass of [schema:PriceSpecification](https://schema.org/PriceSpecification) and extends it with transit specific properties.
+
+_Mandatory properties_
+ * schema:price
+ * schema:priceCurrency
+ * gtfs:paymentMethod: is gtfs:OnBoard or gtfs:BeforeBoarding
+ * gtfs:transfers - one of these: gtfs:NoTransfersAllowed, gtfs:OneTransfersAllowed, gtfs:TwoTransfersAllowed, gtfs:UnlimitedTransfersAllowed
+
+_Optional properties_
+ * rdfs:label - a label for the fare category
+ * gtfs:transferExpiryTime - time until a transfer expires (in seconds)
+ * gtfs:route - the ticket is applicable to this route
+ * gtfs:origin, gtfs:destination - select to which origin and destination it applies
+ * gtfs:zone - is applicable to a certain gtfs:Zone
+
+### gtfs:Zone
+
+A class to describe a zone
+
+_Optional properties_
+ * rdfs:label - a label to give to the specific zone
+
 ### gtfs:Shape
 
 > Discussion: wouldn't it be better to reuse GML?
@@ -198,20 +221,33 @@ _Mandatory properties_:
 A shape exists out of different gtfs:ShapePoints.
 
 _Mandatory properties_:
- * [gtfs:shapePoint](http://vocab.gtfs.org/terms#shapePoint) - links more than 1 [gtfs:ShapePoints](http://vocab.gtfs.org/terms#ShapePoints) to a Shape.
+ * [gtfs:shapePoint](http://vocab.gtfs.org/terms#shapePoint) - links more than  1 [gtfs:ShapePoint](http://vocab.gtfs.org/terms#ShapePoint)s to a Shape.
 
 ### gtfs:ShapePoint
 
 _Mandatory properties_:
- * geo:lon, geo:lat
- * [gtfs:pointSequence](http://vocab.gtfs.org/terms#pointSequence) - The gtfs:pointSequence field associates the latitude and longitude of a shape point with its sequence order along the shape.  The values must increase along the trip.
+ * [geo:long](http://www.w3.org/2003/01/geo/wgs84_pos#long), [geo:lat](http://www.w3.org/2003/01/geo/wgs84_pos#lat) - longitude an latitude in WGS84
+ * [gtfs:pointSequence](http://vocab.gtfs.org/terms#pointSequence) - The gtfs:pointSequence field associates the latitude and longitude of a shape point with its sequence order along the shape. The values must increase along the trip.
 
 _Optional properties_:
  * [gtfs:distanceTraveled](http://vocab.gtfs.org/terms#distanceTraveled) - positions a gtfs:shapepoint as a distance traveled along a shape from the first gtfs:ShapePoint.
 
+### gtfs:Frequency
 
-## Usage
+Describes a frequency of a stop instead of absolute stop times. If a certain gtfs:StopTime is defined, then these stoptimes define the sequence and the time difference between each stop.
 
-GTFS is an exchange format for time schedules and is not intended for live querying. You would use the Linked Data version of GTFS because you can easily generate a big list of statements for the systems that you want using for example the SPARQL CONSTRUCT queries below.
+_Mandatory properties_
+ * gtfs:trip - links to the trip which it applies to
+ * gtfs:startTime - specifies the time at which service begins with the specified frequency.
+ * gtfs:endTime - indicates the time at which service changes to a different frequency (or ceases) at the first stop in the trip.
+ * gtfs:headwaySeconds - indicates the time between departures from the same stop (headway) for this trip type, during the time interval specified by start_time and end_time.
+ * gtfs:exactTimes: false: Frequency-based trips are not exactly scheduled. true: Frequency-based trips are exactly scheduled.
 
-_todo: write SPARQL construct queries and document how to execute them_
+### gtfs:TransferRule
+
+Define additional rules for making connections between routes.
+
+_Mandatory properties_:
+ * gtfs:originStop & gtfs:destinationStop: indicate the this transfer rule applies only when going from this origin to this destination.
+ * gtfs:transferType: links to a gtfs:TransferType, when can be: gtfs:RecommendedTransfer, gtfs:EnsuredTransfer, gtfs:MinimumTimeTransfer, or gtfs:NoTransfer
+ * gtfs:minimumTransferTime: a non negative number in seconds: This transfer requires a minimum amount of time between arrival and departure to ensure a connection. The time required to transfer is specified by gtfs:minimumTransferTime.
