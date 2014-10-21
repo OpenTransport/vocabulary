@@ -6,8 +6,6 @@ See also:
  * The introduction at http://vocab.gtfs.org
  * The [public CSV specification](https://developers.google.com/transit/gtfs/reference) where all semantics are derived from
 
-Current version: __unstable__
-
 ### Editors
 
  * Andrew Byrd
