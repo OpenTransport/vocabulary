@@ -15,6 +15,8 @@
 
 <http://vocab.gtfs.org/terms> a foaf:Document ;
                               foaf:primaryTopic <http://vocab.gtfs.org/terms#> ;
+                              dct:issued "2014-10-23"^^xsd:date ;
+                              dct:modified "2014-10-23"^^xsd:date ;
                               dct:hasFormat <https://raw.githubusercontent.com/OpenTransport/vocabulary/master/gtfs/gtfs.ttl> ;
                               cc:license <http://creativecommons.org/licenses/by/3.0/> ;
                               dct:rights "Copyright 2014 - Open Transport contributors" .
@@ -617,7 +619,7 @@ gtfs:NoTransfer a gtfs:TransferType ;
                 rdfs:label "No Transfer"@en ;
                 rdfs:comment "Transfers are not possible between routes at this location."@en .
 
-gtfs:comment a rdf:Poperty ;
+gtfs:comment a rdf:Property ;
              status:term_status "unstable"@en ;
              rdfs:subPropertyOf rdfs:comment ;
              rdfs:label "Mapping comment"@en ;
