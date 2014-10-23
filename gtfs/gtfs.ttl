@@ -21,7 +21,7 @@
 
 <http://vocab.gtfs.org/terms#> a owl:Ontology ;
                                rdfs:label "General Transit Feed Specification"@en ;
-                               rdfs:comment "This ontology is a translation of the General Transit Feed Specification towards URIs. Its intended use is creating an exchange platform where the Linked GTFS model can be used as a start to get the right data into the right format. For semantics of the classes and properties, see https://developers.google.com/transit/gtfs/reference."@en ;
+                               dct:description "This ontology is a translation of the General Transit Feed Specification towards URIs. Its intended use is creating an exchange platform where the Linked GTFS model can be used as a start to get the right data into the right format. For semantics of the classes and properties, see https://developers.google.com/transit/gtfs/reference."@en ;
                                vann:preferredNamespacePrefix "gtfs" ;
                                vann:preferredNamespaceUri "http://vocab.gtfs.org/terms#";
                                rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference> ;
