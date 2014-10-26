@@ -72,7 +72,7 @@ _Optional properties_:
  * [dct:description](http://purl.org/dc/terms/description) - quality information (sic) describing a stop
  * [gtfs:zone](http://vocab.gtfs.org/terms#zone) - defines the fare zone. Zones are required if you want to provide fare information using a [gtfs:FareRule](http://vocab.gtfs.org/terms#FareRule).
  * [foaf:page](http://xmlns.com/foaf/0.1/page) - a page of the stop with more information
- * [time:timeZone](http://www.w3.org/2006/time#timeZone) - timezone the stop is in (if different from the [gtfs:Agency](http://vocab.gtfs.org/terms#Agency))
+ * [gtfs:timeZone](http://vocab.gtfs.org/terms#timeZone) - timezone the stop is in (if different from the [gtfs:Agency](http://vocab.gtfs.org/terms#Agency))
  * [gtfs:parentStation](http://vocab.gtfs.org/terms#parentStation) - If this stop is part of a station, add a link to the station
 
 ### [gtfs:Station](http://vocab.gtfs.org/terms#Station)
@@ -87,7 +87,7 @@ _Optional properties_:
  * [dct:identifier](http://purl.org/dc/terms/identifier) - a "code": short text or a number that uniquely identifies the stop for passengers. They are often used in phone-based transit information systems or printed on stop signage to make it easier for riders to get a stop schedule or real-time arrival information for a particular station.
  * [dct:description](http://purl.org/dc/terms/description) - quality information (sic) describing a station
  * [foaf:page](http://xmlns.com/foaf/0.1/page) - a page of the station with more information
- * [time:timeZone](http://www.w3.org/2006/time#timeZone) - timezone the stop is in (if different from the [gtfs:Agency](http://vocab.gtfs.org/terms#Agency))
+ * [gtfs:timeZone](http://vocab.gtfs.org/terms#timeZone) - timezone the stop is in (if different from the [gtfs:Agency](http://vocab.gtfs.org/terms#Agency))
 
 ### Wheelchair accessibility
 
