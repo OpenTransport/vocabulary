@@ -12,11 +12,13 @@
 @prefix cc: <http://creativecommons.org/ns#> .
 @prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix schema: <http://schema.org/> .
+#the deprecated vocabulary we're still linking to - https://github.com/iand/vocab-transit/issues/4
+@prefix transit: <http://vocab.org/transit/terms/> .
 
 <http://vocab.gtfs.org/terms> a foaf:Document ;
                               foaf:primaryTopic <http://vocab.gtfs.org/terms#> ;
                               dct:issued "2014-10-23"^^xsd:date ;
-                              dct:modified "2014-10-23"^^xsd:date ;
+                              dct:modified "2014-10-26"^^xsd:date ;
                               dct:hasFormat <https://raw.githubusercontent.com/OpenTransport/vocabulary/master/gtfs/gtfs.ttl> ;
                               cc:license <http://creativecommons.org/licenses/by/3.0/> ;
                               dct:rights "Copyright 2014 - Open Transport contributors" .
@@ -44,6 +46,13 @@ gtfs:Agency a rdfs:Class ;
             rdfs:label "Agency"@en ;
             rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference#agency_fields> ;
             rdfs:comment "An agency operates a certain schedule based transport mode"@en .
+
+gtfs:timeZone a rdf:Property ;
+              status:term_status "testing"@en ;
+              owl:equivalentProperty transit:timezone ;
+              rdfs:label "Time zone"@en ;
+              rdfs:comment "The timezone where a person or organisation is located."@en ;
+              rdfs:seeAlso <http://en.wikipedia.org/wiki/List_of_tz_database_time_zones> .
 
 gtfs:fareUrl a rdf:Property ;
              status:term_status "unstable"@en ;
@@ -81,19 +90,26 @@ gtfs:Station a rdfs:Class ;
              rdfs:comment "A physical structure or area that contains one or more stop."@en ;
              gtfs:comment "Map a row in stops.txt to gtfs:Station when the location_type is 1."@en .
 
-gtfs:wheelchairBoarding a rdf:Property ;
-                        status:term_status "unstable"@en ;
-                        rdfs:label "wheelchair boarding"@en ;
-                        rdfs:comment "Wheelchair boardings are possible from the specified stop or station. If this stop is part of a station, there is also a wheelchair accessible path from outside the station towards the stop."@en ;
-                        gtfs:comment "0 means: check gtfs:parentStation, 1 indicates that at least some vehicles at this stop can be boarded by a rider in a wheelchair, 2 indicates wheelchair boarding is not possible at this stop. See gtfs:WheelchairBoardingStatus class for URIs to map to."@en ;
-                        rdfs:domain gtfs:Stop, gtfs:Station ;
-                        rdfs:range gtfs:WheelchairBoardingStatus .
+gtfs:wheelchairAccessible a rdf:Property ;
+                          status:term_status "unstable"@en ;
+                          rdfs:label "wheelchair boarding"@en ;
+                          rdfs:comment "Wheelchair boardings are possible from the specified stop or station. If this stop is part of a station, there is also a wheelchair accessible path from outside the station towards the stop."@en ;
+                          gtfs:comment "When wheelchair_accessible is 0, map to gtfs:CheckParentStation; if 1 map to gtfs:WheelchairAccessible; if 2 map to gtfs:NotWheelchairAccessible."@en ;
+                          rdfs:domain gtfs:Stop, gtfs:Station ;
+                          rdfs:range gtfs:WheelchairBoardingStatus .
 
 gtfs:WheelchairBoardingStatus a rdfs:Class ;
                               status:term_status "unstable"@en ;
                               rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference#stops_fields> ;
                               rdfs:label "Wheelchair Boarding Information"@en ;
                               rdfs:comment "A class whom's instances indicate how accessible a gtfs:Trip, gtfs:Stop or gtfs:Station is."@en .
+
+
+gtfs:CheckParentStation a gtfs:WheelchairBoardingStatus ;
+                        status:term_status "unstable"@en ;
+                        gtfs:comment "Corresponds with wheelchair_accessible being 0."@en ;
+                        rdfs:label "Check the parent station"@en ;
+                        rdfs:comment "Check the (parent) station for accessibility infomration."@en .
 
 gtfs:WheelchairAccessible a gtfs:WheelchairBoardingStatus ;
                           status:term_status "unstable"@en ;

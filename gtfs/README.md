@@ -22,7 +22,6 @@ See also:
 | rdfs:| `http://www.w3.org/2000/01/rdf-schema#`|
 | foaf:| `http://xmlns.com/foaf/0.1/`|
 | schema:| `http://schema.org/`|
-| time:| `http://www.w3.org/2006/time#`|
 
 ### [gtfs:Feed](http://vocab.gtfs.org/terms#Feed)
 
@@ -52,7 +51,7 @@ A [gtfs:Agency](http://vocab.gtfs.org/terms#Agency) operates a certain schedule 
 _Mandatory properties_:
  * [foaf:name](http://xmlns.com/foaf/0.1/name) - a name for the agency
  * [foaf:page](http://xmlns.com/foaf/0.1/page) - a webpage for the agency
- * [time:timeZone](http://www.w3.org/2006/time#timeZone) - a URI towards a timezone (e.g., for France: http://www.w3.org/2006/timezone-world#ATZ)
+ * [gtfs:timeZone](http://vocab.gtfs.org/terms#timeZone) - a timezone as a string (e.g., Europe/Brussels or America/Los_Angeles)
 
 _Recommended properties_:
  * [dct:language](http://purl.org/dc/terms/language) - the main language of the agency
