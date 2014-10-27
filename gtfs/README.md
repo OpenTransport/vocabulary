@@ -74,6 +74,7 @@ _Optional properties_:
  * [foaf:page](http://xmlns.com/foaf/0.1/page) - a page of the stop with more information
  * [gtfs:timeZone](http://vocab.gtfs.org/terms#timeZone) - timezone the stop is in (if different from the [gtfs:Agency](http://vocab.gtfs.org/terms#Agency))
  * [gtfs:parentStation](http://vocab.gtfs.org/terms#parentStation) - If this stop is part of a station, add a link to the station
+ * [gtfs:wheelchairAccessible](http://vocab.gtfs.org/terms#wheelchairAccessible) - a wheelchair accessibility type
 
 ### [gtfs:Station](http://vocab.gtfs.org/terms#Station)
 
@@ -88,6 +89,7 @@ _Optional properties_:
  * [dct:description](http://purl.org/dc/terms/description) - quality information (sic) describing a station
  * [foaf:page](http://xmlns.com/foaf/0.1/page) - a page of the station with more information
  * [gtfs:timeZone](http://vocab.gtfs.org/terms#timeZone) - timezone the stop is in (if different from the [gtfs:Agency](http://vocab.gtfs.org/terms#Agency))
+ * [gtfs:wheelchairAccessible](http://vocab.gtfs.org/terms#wheelchairAccessible) - a wheelchair accessibility type
 
 ### Wheelchair accessibility
 
@@ -95,6 +97,10 @@ _Optional properties_:
  * [gtfs:WheelchairBoardingStatus](http://vocab.gtfs.org/terms#WheelchairBoardingStatus) - a type for accessibility statuses
  * [gtfs:WheelchairAccessible](http://vocab.gtfs.org/terms#WheelchairAccessible)
  * [gtfs:NotWheelchairAccessible](http://vocab.gtfs.org/terms#NotWheelchairAccessible)
+
+### [gtfs:Zone](http://vocab.gtfs.org/terms#Zone)
+
+Zones are required if you want to provide fare information using gtfs:FareRules
 
 ### [gtfs:Route](http://vocab.gtfs.org/terms#Route)
 
@@ -117,14 +123,14 @@ _Optional properties_:
 [gtfs:RouteType](http://vocab.gtfs.org/terms#RouteType) is a class to describe the type of transportation used on a route.
 
 Currently, 8 route types are available:
-1. [gtfs:LightRail](http://vocab.gtfs.org/terms#LightRail) - Tram, Streetcar, Light rail. Any light rail or street level system within a metropolitan area.
-2. [gtfs:Subway](http://vocab.gtfs.org/terms#Subway) - Subway, Metro. Any underground rail system within a metropolitan area.
-3. [gtfs:Rail](http://vocab.gtfs.org/terms#Rail) - Rail. Used for intercity or long-distance travel.
-4. [gtfs:Bus](http://vocab.gtfs.org/terms#Bus) - Bus. Used for short- and long-distance bus routes.
-5. [gtfs:Ferry](http://vocab.gtfs.org/terms#Ferry) - Ferry. Used for short- and long-distance boat service.
-6. [gtfs:CableCar](http://vocab.gtfs.org/terms#CableCar) - Cable car. Used for street-level cable cars where the cable runs beneath the car.
-7. [gtfs:Gondola](http://vocab.gtfs.org/terms#Gondola) - Gondola, Suspended cable car. Typically used for aerial cable cars where the car is suspended from the cable.
-8. [gtfs:Funicular](http://vocab.gtfs.org/terms#Funicular) - Funicular. Any rail system designed for steep inclines.
+ 1. [gtfs:LightRail](http://vocab.gtfs.org/terms#LightRail) - Tram, Streetcar, Light rail. Any light rail or street level system within a metropolitan area.
+ 2. [gtfs:Subway](http://vocab.gtfs.org/terms#Subway) - Subway, Metro. Any underground rail system within a metropolitan area.
+ 3. [gtfs:Rail](http://vocab.gtfs.org/terms#Rail) - Rail. Used for intercity or long-distance travel.
+ 4. [gtfs:Bus](http://vocab.gtfs.org/terms#Bus) - Bus. Used for short- and long-distance bus routes.
+ 5. [gtfs:Ferry](http://vocab.gtfs.org/terms#Ferry) - Ferry. Used for short- and long-distance boat service.
+ 6. [gtfs:CableCar](http://vocab.gtfs.org/terms#CableCar) - Cable car. Used for street-level cable cars where the cable runs beneath the car.
+ 7. [gtfs:Gondola](http://vocab.gtfs.org/terms#Gondola) - Gondola, Suspended cable car. Typically used for aerial cable cars where the car is suspended from the cable.
+ 8. [gtfs:Funicular](http://vocab.gtfs.org/terms#Funicular) - Funicular. Any rail system designed for steep inclines.
 
 ### gtfs:Trip
 
