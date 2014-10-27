@@ -70,7 +70,7 @@ _Mandatory properties_:
 _Optional properties_:
  * [dct:identifier](http://purl.org/dc/terms/identifier) - a "code": short text or a number that uniquely identifies the stop for passengers. They are often used in phone-based transit information systems or printed on stop signage to make it easier for riders to get a stop schedule or real-time arrival information for a particular stop.
  * [dct:description](http://purl.org/dc/terms/description) - quality information (sic) describing a stop
- * [gtfs:zone](http://vocab.gtfs.org/terms#zone) - defines the fare zone. Zones are required if you want to provide fare information using a [gtfs:FareRule](http://vocab.gtfs.org/terms#FareRule).
+ * [gtfs:zone](http://vocab.gtfs.org/terms#zone) - defines the fare zone. Zones are required if you want to provide fare information using a [gtfs:FareClass](http://vocab.gtfs.org/terms#FareClass).
  * [foaf:page](http://xmlns.com/foaf/0.1/page) - a page of the stop with more information
  * [gtfs:timeZone](http://vocab.gtfs.org/terms#timeZone) - timezone the stop is in (if different from the [gtfs:Agency](http://vocab.gtfs.org/terms#Agency))
  * [gtfs:parentStation](http://vocab.gtfs.org/terms#parentStation) - If this stop is part of a station, add a link to the station
@@ -97,10 +97,6 @@ _Optional properties_:
  * [gtfs:WheelchairBoardingStatus](http://vocab.gtfs.org/terms#WheelchairBoardingStatus) - a type for accessibility statuses
  * [gtfs:WheelchairAccessible](http://vocab.gtfs.org/terms#WheelchairAccessible)
  * [gtfs:NotWheelchairAccessible](http://vocab.gtfs.org/terms#NotWheelchairAccessible)
-
-### [gtfs:Zone](http://vocab.gtfs.org/terms#Zone)
-
-Zones are required if you want to provide fare information using gtfs:FareRules
 
 ### [gtfs:Route](http://vocab.gtfs.org/terms#Route)
 
@@ -163,6 +159,7 @@ _Optional properties_:
  * [gtfs:headsign](http://vocab.gtfs.org/terms#headsign) - override gtfs:trip's headsign
  * [gtfs:pickupType](http://vocab.gtfs.org/terms#pickupType) - how to get on a transit vehicle at a certain time & location
  * [gtfs:dropOffType](http://vocab.gtfs.org/terms#dropOffType) - how to get off a transit vehicle at a certain time & location
+ * [gtfs:distanceTraveled](http://vocab.gtfs.org/terms#distanceTraveled) - Positions a stop as a distance from the first shape point. It represents a real distance traveled along the route in units such as feet or kilometers. This information allows the trip planner to determine how much of the shape to draw when showing part of a trip on the map. The values used for gtfs:distanceTraveled must increase along with gtfs:stopSequence: they cannot be used to show reverse travel along a route.
 
 ### [gtfs:PickupType](http://vocab.gtfs.org/terms#PickupType) and [gtfs:DropOffType](http://vocab.gtfs.org/terms#DropOffType)
 
@@ -207,8 +204,8 @@ _Optional properties_
  * rdfs:label - a label for the fare category
  * gtfs:transferExpiryTime - time until a transfer expires (in seconds)
  * gtfs:route - the ticket is applicable to this route
- * gtfs:origin, gtfs:destination - select to which origin and destination it applies
- * gtfs:zone - is applicable to a certain gtfs:Zone
+ * gtfs:originZone, gtfs:destinationZone - select to which origin and destination it applies
+ * gtfs:zone - is applicable only within this gtfs:Zone
 
 ### gtfs:Zone
 

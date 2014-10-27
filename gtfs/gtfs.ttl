@@ -72,7 +72,7 @@ gtfs:zone a rdf:Property ;
             status:term_status "unstable"@en ;
             rdfs:range gtfs:Zone ;
             rdfs:label "Zone"@en ;
-            rdfs:comment "A gtfs:Stop defines the fare zone. Zones are required if you want to provide fare information using gtfs:FareRules."@en ;
+            rdfs:comment "A gtfs:Stop defines the fare zone. Zones are required if you want to provide fare information using gtfs:FareClass."@en ;
             gtfs:comment "You can create a new URI per zone, or just keep it an integer as per your own taste."@en .
 
 gtfs:parentStation a rdf:Property ;
@@ -86,7 +86,7 @@ gtfs:parentStation a rdf:Property ;
 gtfs:Zone a rdfs:Class ;
           status:term_status "unstable"@en ;
           rdfs:label "Zone"@en ;
-          rdfs:comment "Zones are required if you want to provide fare information using gtfs:FareRules"@en .
+          rdfs:comment "Zones are required if you want to provide fare information using gtfs:FareClass"@en .
 
 gtfs:Station a rdfs:Class ;
              status:term_status "unstable"@en ;
