@@ -18,7 +18,7 @@
 <http://vocab.gtfs.org/terms> a foaf:Document ;
                               foaf:primaryTopic <http://vocab.gtfs.org/terms#> ;
                               dct:issued "2014-10-23"^^xsd:date ;
-                              dct:modified "2014-10-26"^^xsd:date ;
+                              dct:modified "2014-10-27"^^xsd:date ;
                               dct:hasFormat <https://raw.githubusercontent.com/OpenTransport/vocabulary/master/gtfs/gtfs.ttl> ;
                               cc:license <http://creativecommons.org/licenses/by/3.0/> ;
                               dct:rights "Copyright 2014 - Open Transport contributors" .
@@ -257,7 +257,7 @@ gtfs:route a rdf:Property ;
            rdfs:label "Route"@en ;
            rdfs:comment "This thing is applicable to this gtfs:Route"@en ;
            rdfs:domain gtfs:Trip ;
-           rdfs:range gtfs:Route, gtfs:FareClass .
+           rdfs:range gtfs:Route, gtfs:FareRule .
 
 gtfs:bikesAllowed a rdf:Property ;
                   status:term_status "unstable"@en ;
@@ -510,6 +510,11 @@ gtfs:transferExpiryTime a rdf:Property ;
                         status:term_status "unstable"@en ;
                         rdfs:label "Transfer Expiry Time"@en ;
                         rdfs:comment "The time a ticket remains valid when having left the previous vehicle"@en .
+
+gtfs:FareRule a rdfs:Class ;
+              status:term_status "unstable"@en ;
+              rdfs:label "Fare Rule"@en ;
+              rdfs:comment "A rule which binds a gtfs:FareClass to a part of the network."@en.
 
 gtfs:originZone a rdf:Property ;
                 status:term_status "unstable"@en ;

@@ -199,12 +199,20 @@ _Mandatory properties_
  * schema:priceCurrency
  * gtfs:paymentMethod: is gtfs:OnBoard or gtfs:BeforeBoarding
  * gtfs:transfers - one of these: gtfs:NoTransfersAllowed, gtfs:OneTransfersAllowed, gtfs:TwoTransfersAllowed, gtfs:UnlimitedTransfersAllowed
-
 _Optional properties_
- * rdfs:label - a label for the fare category
  * gtfs:transferExpiryTime - time until a transfer expires (in seconds)
- * gtfs:route - the ticket is applicable to this route
- * gtfs:originZone, gtfs:destinationZone - select to which origin and destination it applies
+
+### gtfs:FareRule
+
+A rule which binds a gtfs:FareClass to a part of the network.
+
+_Mandatory properties_
+* gtfs:fareClass - links to one gtfs:FareClass
+
+_Optional properties (yet mandatory to use at least 1)_
+ * gtfs:route - the fare class is applicable to this route
+ * gtfs:originZone - the fare class is applicable to this originZone
+ * gtfs:destinationZone - An optional destinationZone can be given as well
  * gtfs:zone - is applicable only within this gtfs:Zone
 
 ### gtfs:Zone
