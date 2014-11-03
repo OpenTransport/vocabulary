@@ -9,12 +9,41 @@
 @prefix stoptimes: <http://semweb.mmlab.be/ns/stoptimes#> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 
-<http://semweb.mmlab.be/ns/stoptimes#> a owl:Ontology ;
-                                       rdfs:label "The Stop Times ontology"@en ;
-                                       rdfs:comment "This ontology provides the predicates necessary to describe an arrival of a transit vehicle and its departure at a certain gtfs:Stop."@en ;
-                                       vann:preferredNamespacePrefix "stoptimes" ;
-                                       vann:preferredNamespaceUri "http://semweb.mmlab.be/ns/stoptimes#";
-                                       cc:license 	<http://creativecommons.org/licenses/by/3.0/> ;
-                                       dct:creator [ foaf:mbox "Pieter.Colpaert@UGent.be"; foaf:name "Pieter Colpaert" ] .
+<http://semweb.mmlab.be/ns/stoptimes> a foaf:Document ;
+                                      foaf:primaryTopic <http://semweb.mmlab.be/ns/stoptimes#Ontology> ;
+                                      dct:issued "2014-10-31"^^xsd:date ;
+                                      dct:modified "2014-10-31"^^xsd:date ;
+                                      dct:hasFormat <https://raw.githubusercontent.com/OpenTransport/vocabulary/master/stoptimes/stoptimes.ttl> ;
+                                      dct:license <http://creativecommons.org/licenses/by/3.0/> ;
+                                      dct:rights "Copyright 2014 - Open Transport contributors" .
 
-stoptimes:StopTime a rdfs:Class .
+<http://semweb.mmlab.be/ns/stoptimes#Ontology> a owl:Ontology ;
+                                               rdfs:label "The Stop Times ontology"@en ;
+                                               rdfs:comment "This ontology provides the predicates necessary to describe an arrival of a transit vehicle and its departure at a certain Stop."@en ;
+                                               vann:preferredNamespacePrefix "stoptimes" ;
+                                               vann:preferredNamespaceUri "http://semweb.mmlab.be/ns/stoptimes#" ;
+                                               dct:creator [ foaf:mbox "Pieter.Colpaert@UGent.be"; foaf:name "Pieter Colpaert" ] .
+
+stoptimes:StopTime a rdfs:Class ;
+                   rdfs:label "Stop Time"@en ;
+                   rdfs:comment "A location and a time where a vehicle stops for the purpose of loading and/or unloading people or things"@en .
+
+stoptimes:nextStopTime a rdf:Property ;
+                       rdfs:label "Next stop time"@en ;
+                       rdfs:comment "The next stop time on this vehicle's trajectory."@en ;
+                       rdfs:range stoptimes:StopTime .
+
+stoptimes:previousStopTime a rdf:Property ;
+                           rdfs:label "Previous stop time"@en ;
+                           rdfs:comment "The previous stop time on this vehicle's trajectory."@en ;
+                           rdfs:range stoptimes:StopTime .
+
+stoptimes:arrivalTimeStatement a rdfs:Class ;
+                               rdfs:label "Arrival time statement"@en ;
+                               rdfs:comment "A statement done at a certain moment that indicates when a vehicle is going to arrive"@en ;
+                               rdfs:range stoptimes:TimeStatement .
+
+stoptimes:departureTimeStatement a rdfs:Class ;
+                                 rdfs:label "Departure time statement"@en ;
+                                 rdfs:comment "A statement done at a certain moment that indicates when a vehicle is going to depart"@en ;
+                                 rdfs:range stoptimes:TimeStatement .
