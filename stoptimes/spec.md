@@ -15,15 +15,15 @@
 
 ![Schema](https://docs.google.com/drawings/d/1uLXAtV9wpD1Mm7FJQ_vEpFNdBarG8oXhdAloyo9VIkY/pub?w=924&h=355)
 
-In the stoptimes ontology, every stop a certain vehicle does or is schedules to do, gets a certain URI. A st:StopTime has to have a st:arrivalTime and/or a st:departureTime. If one of these is not set, it may indicate the vehicle is at a terminus or it is starting its service.
+In the stoptimes ontology, every stop a certain vehicle does or is schedules to do, gets a certain URI. A [st:StopTime](http://semweb.mmlab.be/ns/stoptimes#StopTime) has to have a [st:arrivalTime](http://semweb.mmlab.be/ns/stoptimes#arrivalTime) and/or a [st:departureTime](http://semweb.mmlab.be/ns/stoptimes#departureTime). If one of these is not set, it may indicate the vehicle is at a terminus or it is starting its service.
 
-The st:StopTime also refers through gtfs:stop to a gtfs:Stop, pointing to the exact location where passengers can disembark and embark. Mind that the gtfs:stop can change over time for the same st:StopTime. For example, one gtfs:Stop can be "platform A of Paris Gare du Nord", but due to the late announcement of the exact platform at Paris Gare du Nord, first the gtfs:Station "Paris Gare du Nord" can be mentioned before the precise gtfs:Stop is mentioned.
+The [st:StopTime](http://semweb.mmlab.be/ns/stoptimes#StopTime) also refers through [gtfs:stop](http://vocab.gtfs.org/terms#stop) to a [gtfs:Stop](http://vocab.gtfs.org/terms#Stop), pointing to the exact location where passengers can disembark and embark. Mind that the [gtfs:stop](http://vocab.gtfs.org/terms#stop) can change over time for the same [st:StopTime](http://semweb.mmlab.be/ns/stoptimes#StopTime). For example, one [gtfs:Stop](http://vocab.gtfs.org/terms#Stop) can be "platform A of Paris Gare du Nord", but due to the late announcement of the exact platform at Paris Gare du Nord, first the [gtfs:Station](http://vocab.gtfs.org/terms#Station) "Paris Gare du Nord" can be mentioned before the precise [gtfs:Stop](http://vocab.gtfs.org/terms#Stop) is mentioned.
 
-The st:StopTime may refer, using the predicate st:nextStopTime, to the next st:StopTime. Mind that this can also change over time, e.g., for an extra stop being introduced on the current gtfs:Trip.
+The [st:StopTime](http://semweb.mmlab.be/ns/stoptimes#StopTime) may refer, using the predicate [st:nextStopTime](http://semweb.mmlab.be/ns/stoptimes#nextStopTime), to the next [st:StopTime](http://semweb.mmlab.be/ns/stoptimes#StopTime). Mind that this can also change over time, e.g., for an extra stop being introduced on the current [gtfs:Trip](http://vocab.gtfs.org/terms#Trip).
 
-gtfs:headSign is a predicate from the GTFS ontology and gives a label to the current trip which can be shown to the end-user to refer to the right vehicle at that station.
+[gtfs:headSign](http://vocab.gtfs.org/terms#headSign) is a predicate from the GTFS ontology and gives a label to the current trip which can be shown to the end-user to refer to the right vehicle at that station.
 
-gtfs:route is a predicate to link a stoptime with a certain Route. Also gtfs:trip may be used.
+[gtfs:route](http://vocab.gtfs.org/terms#route) is a predicate to link a stoptime with a certain Route. Also [gtfs:trip](http://vocab.gtfs.org/terms#trip) may be used.
 
 # Usage
 
@@ -81,4 +81,4 @@ Use a JSON-LD context and mark up your JSON:
 
 ## Archives
 
-For archiving purposes, which may be interesting for comparing stop time announcements over time, we introduce the st:StopTime as a [prov:Entity](http://www.w3.org/ns/prov#Entity). When used in combination with Prov, each st:StopTime becomes an observation or prediction of a stoptime as done by a certain Activity at a certain moment (e.g., scraping of a website every night or calculated through a time schedule).
+For archiving purposes, which may be interesting for comparing stop time announcements over time, we introduce the [st:StopTime](http://semweb.mmlab.be/ns/stoptimes#StopTime) as a [prov:Entity](http://www.w3.org/ns/prov#Entity). When used in combination with Prov, each [st:StopTime](http://semweb.mmlab.be/ns/stoptimes#StopTime) becomes an observation or prediction of a stoptime as done by a certain Activity at a certain moment (e.g., scraping of a website every night or calculated through a time schedule).
