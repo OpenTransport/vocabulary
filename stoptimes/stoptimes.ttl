@@ -31,14 +31,14 @@ st:StopTime a rdfs:Class ;
 
 st:arrivalTime a rdf:Property ;
                rdfs:label "Arrival Time"@en ;
-               rdfs:comment "The time of arrival at a certain stop"@en ;
+               rdfs:comment "The true time of arrival at a certain stop"@en ;
                rdfs:domain st:StopTime ;
                rdfs:range xsd:date .
 
 
 st:departureTime a rdf:Property ;
                  rdfs:label "Departure Time"@en ;
-                 rdfs:comment "The time of departure at a certain stop"@en ;
+                 rdfs:comment "The true time of departure at a certain stop"@en ;
                  rdfs:domain st:StopTime ;
                  rdfs:range xsd:date .
 
@@ -47,3 +47,15 @@ st:nextStopTime a rdf:Property ;
                 rdfs:comment "The next stop time on this vehicle's trajectory."@en ;
                 rdfs:range st:StopTime ;
                 rdfs:domain st:StopTime .
+
+st:arrivalDelay a rdf:Property ;
+                rdfs:label "Arrival Delay"@en ;
+                rdfs:comment "The time in seconds in which the st:arrivalTime differs from the scheduled arrival time"@en ;
+                rdfs:range xsd:integer ;
+                rdfs:domain st:StopTime .
+
+st:departureDelay a rdf:Property ;
+                  rdfs:label "Departure Delay"@en ;
+                  rdfs:comment "The time in seconds in which the st:departureTime differs from the scheduled departure time"@en ;
+                  rdfs:range xsd:integer ;
+                  rdfs:domain st:StopTime .
